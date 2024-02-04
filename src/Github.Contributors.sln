@@ -1,8 +1,28 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RepoExplorer.Api", "RepoExplorer.Api\RepoExplorer.Api.csproj", "{CA84BD79-6759-43E1-94FA-8D61C1F2599F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RepoExplorer.Application", "RepoExplorer.Application\RepoExplorer.Application.csproj", "{369B72FE-150A-4C93-9F64-C9422577C53C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RepoExplorer.Infrastructure", "RepoExplorer.Infrastructure\RepoExplorer.Infrastructure.csproj", "{FCFCF7B8-C375-402F-9E90-9EE620DCF4A7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CA84BD79-6759-43E1-94FA-8D61C1F2599F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CA84BD79-6759-43E1-94FA-8D61C1F2599F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CA84BD79-6759-43E1-94FA-8D61C1F2599F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CA84BD79-6759-43E1-94FA-8D61C1F2599F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{369B72FE-150A-4C93-9F64-C9422577C53C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{369B72FE-150A-4C93-9F64-C9422577C53C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{369B72FE-150A-4C93-9F64-C9422577C53C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{369B72FE-150A-4C93-9F64-C9422577C53C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FCFCF7B8-C375-402F-9E90-9EE620DCF4A7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FCFCF7B8-C375-402F-9E90-9EE620DCF4A7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FCFCF7B8-C375-402F-9E90-9EE620DCF4A7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FCFCF7B8-C375-402F-9E90-9EE620DCF4A7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
