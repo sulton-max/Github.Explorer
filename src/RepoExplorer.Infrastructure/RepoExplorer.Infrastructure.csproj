@@ -10,8 +10,4 @@
       <ProjectReference Include="..\RepoExplorer.Application\RepoExplorer.Application.csproj" />
     </ItemGroup>
 
-    <ItemGroup>
-      <Folder Include="Repository\Settings\" />
-    </ItemGroup>
-
 </Project>

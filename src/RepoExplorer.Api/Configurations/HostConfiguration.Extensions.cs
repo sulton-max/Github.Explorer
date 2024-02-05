@@ -1,19 +1,14 @@
-using System.Reflection;
-using Octokit;
+using System.Net.Http.Headers;
+using RepoExplorer.Application.Repository.Brokers;
+using RepoExplorer.Application.Repository.Services;
+using RepoExplorer.Infrastructure.Repository.Brokers;
+using RepoExplorer.Infrastructure.Repository.Services;
 using RepoExplorer.Infrastructure.Settings;
 
 namespace RepoExplorer.Api.Configurations;
 
 public static partial class HostConfiguration
 {
-    private static readonly ICollection<Assembly> Assemblies;
-
-    static HostConfiguration()
-    {
-        Assemblies = Assembly.GetExecutingAssembly().GetReferencedAssemblies().Select(Assembly.Load).ToList();
-        Assemblies.Add(Assembly.GetExecutingAssembly());
-    }
-    
     /// <summary>
     /// Configures exposers including controllers
     /// </summary>
@@ -21,12 +16,16 @@ public static partial class HostConfiguration
     /// <returns></returns>
     private static WebApplicationBuilder AddGithubInfrastructure(this WebApplicationBuilder builder)
     {
-        var test = builder.Configuration["GithubApiSettings:ClientSecret"];
-        
-        builder.Services.AddScoped<IGitHubClient, GitHubClient>(
-            _ => new GitHubClient(new ProductHeaderValue("Explorer"))
+        // Register clients
+        builder.Services.AddHttpClient<IGithubApiBroker, GithubApiBroker>(
+            client =>
             {
-                Credentials = new Credentials(builder.Configuration["GithubApiSettings:ClientSecret"])
+                client.BaseAddress = new Uri(builder.Configuration["GithubApiSettings:BaseAddress"]!);
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue(
+                    "Bearer",
+                    builder.Configuration["GithubApiSettings:AccessToken"]
+                );
+                client.DefaultRequestHeaders.Add("User-Agent", "Explorer");
             }
         );
 
