@@ -1,5 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
-using Octokit;
+using RepoExplorer.Application.Repository.Services;
 
 namespace RepoExplorer.Api.Controllers;
 
@@ -7,17 +7,10 @@ namespace RepoExplorer.Api.Controllers;
 [Route("api/[controller]")]
 public class ReposController : ControllerBase
 {
-    [HttpGet("{owner}/{repositoryName}/contributors")]
-    public async Task<IActionResult> GetContributorsAsync([FromServices] IGitHubClient gitHubClient, string owner, string repositoryName)
+    [HttpPost("contributors/format")]
+    public async Task<IActionResult> FormatContributors([FromBody] IReadOnlyList<string> contributors, [FromServices]IFormattingService formattingService)
     {
-        var contributors = await gitHubClient.Repository.GetAllContributors(owner, repositoryName);
-        return Ok(contributors);
-    }
-
-    [HttpGet("{repositoryId:long}/contributors")]
-    public async Task<IActionResult> GetContributorsAsync([FromServices] IGitHubClient gitHubClient, long repositoryId)
-    {
-        var contributors = await gitHubClient.Repository.GetAllContributors(repositoryId);
-        return Ok(contributors);
+        var result = await formattingService.FormatContributorsForMarkdownAsync(contributors);
+        return Ok(result);
     }
 }

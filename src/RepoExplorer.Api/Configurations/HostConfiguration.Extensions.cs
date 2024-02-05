@@ -29,9 +29,12 @@ public static partial class HostConfiguration
             }
         );
 
+        // Register services
+        builder.Services.AddScoped<IFormattingService, FormattingService>();
+
         return builder;
     }
-    
+
     /// <summary>
     /// Configures exposers including controllers
     /// </summary>
